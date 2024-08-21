@@ -13,12 +13,13 @@ func _process(delta):
 
 func _on_http_request_request_completed(result, response_code, headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
-	
+	print(str(json))
+	$airport.text = json["data"][0]["station"]["name"]
 	$density.text = "Density: " + str(json["data"][0]["barometer"]["hg"]) + "hg"
-	$ceiling.text = "Ceiling: " + str(json["data"][0]["ceiling"]["feet"]) + "ft"
-	$conditions.text = "Conditions: " + json["data"][0]["conditions"][0]["text"]
+	$visibility.text = "Ceiling: " + str(json["data"][0]["visibility"]["meters"]) + " metres"
+	$temperature.text = "Temperature: " + str(json["data"][0]["temperature"]["celsius"]) + " degrees Celsius"
+	print(str(json["data"][0]))
 	$category.text = "Category: " + json["data"][0]["flight_category"]
-	#print(json["data"][0]["name"])
 	$wind.text = "Wind: " + str(json["data"][0]["wind"]["degrees"]) + " degrees @ " + str(json["data"][0]["wind"]["speed_kts"]) + "kts"
 func _on_call_button_up():
 	if code.length() == 4:

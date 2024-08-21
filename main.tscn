@@ -9,6 +9,7 @@ script = ExtResource("1_4mj50")
 [node name="bg" type="ColorRect" parent="."]
 offset_right = 1153.0
 offset_bottom = 649.0
+color = Color(0, 0, 0, 1)
 
 [node name="LineEdit" type="LineEdit" parent="."]
 offset_left = 452.0
@@ -30,48 +31,51 @@ theme = ExtResource("1_51gjn")
 text = "RETRIEVE DATA"
 
 [node name="wind" type="Label" parent="."]
-offset_left = 32.0
-offset_top = 308.0
-offset_right = 248.0
-offset_bottom = 350.0
+offset_left = 404.0
+offset_top = 305.0
+offset_right = 620.0
+offset_bottom = 347.0
 theme = ExtResource("1_51gjn")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Wind:"
 
-[node name="conditions" type="Label" parent="."]
-offset_left = 27.0
-offset_top = 547.0
-offset_right = 243.0
-offset_bottom = 589.0
+[node name="airport" type="Label" parent="."]
+offset_left = 247.0
+offset_top = 236.0
+offset_right = 955.0
+offset_bottom = 278.0
 theme = ExtResource("1_51gjn")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Conditions:"
+horizontal_alignment = 1
 
-[node name="ceiling" type="Label" parent="."]
-offset_left = 30.0
-offset_top = 367.0
-offset_right = 246.0
-offset_bottom = 409.0
+[node name="temperature" type="Label" parent="."]
+offset_left = 399.0
+offset_top = 544.0
+offset_right = 615.0
+offset_bottom = 586.0
 theme = ExtResource("1_51gjn")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Ceiling:"
+text = "Temperature:"
+
+[node name="visibility" type="Label" parent="."]
+offset_left = 402.0
+offset_top = 364.0
+offset_right = 618.0
+offset_bottom = 406.0
+theme = ExtResource("1_51gjn")
+text = "Visibility:"
 
 [node name="category" type="Label" parent="."]
-offset_left = 30.0
-offset_top = 424.0
-offset_right = 246.0
-offset_bottom = 466.0
+offset_left = 402.0
+offset_top = 421.0
+offset_right = 618.0
+offset_bottom = 463.0
 theme = ExtResource("1_51gjn")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Category:"
 
 [node name="density" type="Label" parent="."]
-offset_left = 30.0
-offset_top = 484.0
-offset_right = 246.0
-offset_bottom = 526.0
+offset_left = 402.0
+offset_top = 481.0
+offset_right = 618.0
+offset_bottom = 523.0
 theme = ExtResource("1_51gjn")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Density:"
 
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

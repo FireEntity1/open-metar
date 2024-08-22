@@ -1,10 +1,11 @@
 extends Node2D
 
 var code = ""
+var isReady = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$rateLimit.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +22,17 @@ func _on_http_request_request_completed(result, response_code, headers, body):
 	print(str(json["data"][0]))
 	$category.text = "Category: " + json["data"][0]["flight_category"]
 	$wind.text = "Wind: " + str(json["data"][0]["wind"]["degrees"]) + " degrees @ " + str(json["data"][0]["wind"]["speed_kts"]) + "kts"
+	
+	isReady = false
+	$rateLimit.start()
+
 func _on_call_button_up():
-	if code.length() == 4:
+	if not isReady:
+		$airport.text = "SLOW DOWN"
+		pass
+	elif code.length() == 4:
 		$HTTPRequest.request("https://api.checkwx.com/metar/" + code + "/decoded?x-api-key=dc420c7f63f741d89aa62b0f34")
+	
+
+func _on_rate_limit_timeout():
+	isReady = true

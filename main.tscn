@@ -78,5 +78,9 @@ offset_bottom = 523.0
 theme = ExtResource("1_51gjn")
 text = "Density:"
 
+[node name="rateLimit" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
 [connection signal="button_up" from="call" to="." method="_on_call_button_up"]
+[connection signal="timeout" from="rateLimit" to="." method="_on_rate_limit_timeout"]
